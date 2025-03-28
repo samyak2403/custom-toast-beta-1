@@ -32,7 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 
 }
 
@@ -46,3 +51,16 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+
+                groupId = "com.github.samyak2403"
+                artifactId = "custom-toast-beta-1"
+                version = "1.0.0"
+            }
+        }
+    }
+}

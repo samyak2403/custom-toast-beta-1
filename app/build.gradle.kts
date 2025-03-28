@@ -42,6 +42,7 @@ android {
 
 dependencies {
     implementation(project(":custom-toast"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
